@@ -23,7 +23,7 @@ int test[a] = {0, 0, 0, 0}; // Массив для хранения всегда
 int i = 0; // Счетчик для массива NeVer
 int n = 0; // Счетчик для проверки совпадений
 int wa = 0; // Переменная для подсчета неверных попыток
-int test1 = 3; // Переменная для проверки всегда работающего кода
+int test1 = 0; // Переменная для проверки всегда работающего кода
 
 // Настройка клавиатуры
 const byte ROWS = 4; // Количество строк на клавиатуре
@@ -37,6 +37,22 @@ char hexaKeys[ROWS][COLS] = {
 byte rowPins[ROWS] = {2, 3, 4, 5}; // Пины для подключения строк клавиатуры
 byte colPins[COLS] = {6, 7, 8, 9}; // Пины для подключения столбцов клавиатуры
 Keypad Klava = Keypad(makeKeymap(hexaKeys), rowPins, colPins, ROWS, COLS); // Инициализация клавиатуры
+
+void vvediteParol() {
+  LCD.clear();
+  LCD.setCursor(0, 0);
+  LCD.print("Vvedite kod:");
+  LCD.setCursor(0, 1);
+  for (int j = 0; j < a; j++) {
+    LCD.print(" ");
+  }
+}
+
+void sbrosNeVer() {
+  for (int i = 0; i < a; i++) {
+    NeVer[i] = 0;
+  }
+}
 
 void setup() {
   Serial.begin(9600); // Запуск последовательного соединения для отладки
@@ -63,7 +79,7 @@ void setup() {
   // Вывод содержимого массива Ver в монитор порта для отладки
   for (int t = 0; t < a; t++) {
     Serial.print(t + 1);
-    Serial.print(" ячейка - ");
+    Serial.print(" yacheika - ");
     for (int i = 0; i < a; i++) {
       Serial.print(Ver[t][i]);
     }
@@ -219,29 +235,37 @@ void loop() {
     }
 
     if (i == a) { // Если введено 4 символа
-      // Проверка совпадения введенного кода с одним из кодов в массиве Ver
-      for (int i = 0; i < 3; i++){
-        for (int b = 0; b < a; b++) {
-          if (test[b] == NeVer[b]) {
-            test1++; // Увеличение счетчика совпадений
-          }
+      // Проверка всегда работающего кода (0000)
+      test1 = 0;
+      for (int b = 0; b < a; b++) {
+        if (test[b] == NeVer[b]) {
+          test1++;
         }
       }
-      if (test1 == 3){
-         rotateMotor1CW(); // Вращение первого мотора по часовой стрелке
+      
+      if (test1 == a) { // Если введен тестовый код
+        rotateMotor1CW(); // Вращение первого мотора по часовой стрелке
+        LCD.clear();
+        LCD.setCursor(3, 0);
+        LCD.print("nazhmite #");
+        LCD.setCursor(1, 1);
+        LCD.print("dlya zakritiya");
+        
+        while (true) {
+          char simvol = Klava.getKey();
+          if (simvol == '#') {
+            rotateMotor1CCW(); // Возврат первого мотора
+            break;
+          }
+        }
+        
+        // Сброс и подготовка к новому вводу
+        i = 0;
+        sbrosNeVer();
+        vvediteParol();
       }
-      LCD.clear();
-          LCD.setCursor(3, 0);
-          LCD.print("nazhmite #");
-          LCD.setCursor(1, 1);
-          LCD.print("dlya zakritiya");
-      if (simvol == '#') {
-              // Возвращаем мотор в исходное положение
-              if (q == 0) {
-                rotateMotor1CCW(); // Возврат первого мотора
-              }
-              break;
-      }
+      test1 = 0;
+      // Проверка совпадения введенного кода с одним из кодов в массиве Ver
       for (int q = 0; q < a; q++) {
         n = 0; // Сброс счетчика совпадений перед каждой проверкой
         for (int e = 0; e < a; e++) {
@@ -321,21 +345,5 @@ void loop() {
       sbrosNeVer();
       vvediteParol();
     }
-  }
-}
-
-void vvediteParol() {
-  LCD.clear();
-  LCD.setCursor(0, 0);
-  LCD.print("Vvedite kod:");
-  LCD.setCursor(0, 1);
-  for (int j = 0; j < a; j++) {
-    LCD.print(" ");
-  }
-}
-
-void sbrosNeVer() {
-  for (int i = 0; i < a; i++) {
-    NeVer[i] = 0;
   }
 }
