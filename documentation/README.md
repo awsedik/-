@@ -41,4 +41,4 @@
 ## Ссылки  
 
 - [Исходный код проекта](https://github.com/awsedik/big-challenges_rolin/blob/main/programms/quady_v4.ino)  
-- [Визуальные материалы](../Визуализация)  
+- [Визуальные материалы](../visual)  
