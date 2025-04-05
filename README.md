@@ -26,7 +26,7 @@
 5. Подключите питание
 
 ## Демонстрация
-![Вид спереди](/views/front_view.jpg)
-![Вид сверху](/views/top_view.jpg)
-![Вид сбоку](/views/side_view.jpg)
-![Изометрический вид](/views/general_view.jpg)
+![Вид спереди](/visual/views/front_view.jpg)
+![Вид сверху](/visual/views/top_view.jpg)
+![Вид сбоку](/visual/views/side_view.jpg)
+![Изометрический вид](/visual/views/general_view.jpg)
