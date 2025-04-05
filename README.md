@@ -25,8 +25,5 @@
 4. Соберите макет по схеме
 5. Подключите питание
 
-## Демонстрация
-![Вид спереди](/visual/views/front_view.jpg)
-![Вид сверху](/visual/views/top_view.jpg)
-![Вид сбоку](/visual/views/side_view.jpg)
-![Изометрический вид](/visual/views/general_view.jpg)
+## ![Фотографии прототипа с разных ракурсов](/visual/views/)
+![Фотографии прототипа с разных ракурсов](/visual/views/)
