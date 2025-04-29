@@ -7,11 +7,15 @@
 
   ### 2. **LiquidCrystal_I2C**
      - **Назначение**: Управление дисплеем Lcd 1602 I2c.
-     - **Установка**: Через менеджер библиотек Arduino IDE или [GitHub](https://github.com/johnrickman/LiquidCrystal_I2C).
+     - **Установка**: [GitHub](https://github.com/johnrickman/LiquidCrystal_I2C).
+
+  ### 3. **LCD_1602_RUS**
+     - **Назначение**: Вывод текста на LCD экран на русском языке.
+     - **Установка**: [GitHub]([https://github.com/johnrickman/LiquidCrystal_I2C](https://xn--18-6kcdusowgbt1a4b.xn--p1ai/%d0%b1%d0%b8%d0%b1%d0%bb%d0%b8%d0%be%d1%82%d0%b5%d0%ba%d0%b8-%d0%b0%d1%80%d0%b4%d1%83%d0%b8%d0%bd%d0%be/)).
 
   ### 3. **Keypad**
      - **Назначение**: Работа с клавиатурой 4x4 для ввода кода.
-     - **Установка**: Через менеджер библиотек или [GitHub](https://github.com/Chris--A/Keypad).
+     - **Установка**: [GitHub](https://github.com/Chris--A/Keypad).
 
 ## Инструкция по установке
   1. Для **Servo.h**:  
